@@ -1,16 +1,22 @@
 # call_native__app
 
-A new Flutter project.
+## MethodChannel
 
-## Getting Started
+- Dartからネイティブのメソッド呼び出し
+- 逆に、ネイティブからDartのメソッド呼び出しが可能
 
-This project is a starting point for a Flutter application.
+- チャンネルを作成後、下記を非同期で呼び出す
 
-A few resources to get you started if this is your first Flutter project:
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+// チャンネル作成
+static const MethodChannel _channel = const MethodChannel('hogeChannel');
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+// 第一引数：呼び出したいメソッド名を文字列で指定
+// 呼び出しメソッドの引数に指定するデータを指定
+
+Future<T> invokeMethod<T>(String method, [ dynamic arguments ]) async
+
+```
+
+- サンプルコードは実装参照
